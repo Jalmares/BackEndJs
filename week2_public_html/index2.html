@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf8">
+  <title>Example</title>
+  <link href="./css/style2.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+  <h1>List of cats</h1>
+  <ul>
+    <!-- js creates list here -->
+  </ul>
+  <hr>
+  <div class="forms">
+    <div class="form-wrapper">
+      <h3>Add user</h3>
+      <form action="http://localhost:3000/user" method="post" class="light-border" id="addUserForm">
+        <input class="light-border" type="text" name="name" placeholder="Name" required>
+        <input class="light-border" type="email" name="email" placeholder="email" required>
+        <input class="light-border" type="password" name="passwd" placeholder="Password" required>
+        <button class="light-border" type="submit">Save</button>
+      </form>
+    </div>
+
+    <div class="form-wrapper">
+      <h3>Add cat</h3>
+      <form action="http://localhost:3000/cat"
+            method="post"
+            class="light-border"
+            enctype="multipart/form-data"
+            id="addCatForm">
+        <input class="light-border" type="text" name="name" placeholder="Name" required>
+        <input class="light-border" type="text" name="age" placeholder="Age" required>
+        <input class="light-border" type="text" name="weight" placeholder="Weight" required>
+        <select class="light-border add-owner" name="owner" required>
+          <option value="">Select owner</option>
+        </select>
+        <input class="light-border" type="file" name="cat" placeholder="Choose file">
+        <button class="light-border" type="submit">Upload</button>
+      </form>
+    </div>
+
+    <div class="form-wrapper">
+      <h3>Modify cat</h3>
+      <form action="http://localhost:3000/cat" id="modCatForm" class="light-border">
+        <input class="light-border" type="text" name="name" placeholder="Name" required>
+        <input class="light-border" type="text" name="age" placeholder="Age" required>
+        <input class="light-border" type="text" name="weight" placeholder="Weight" required>
+        <select class="light-border add-owner" name="owner" required>
+          <option value="">Select owner</option>
+        </select>
+        <input type="hidden" name="id">
+        <button class="light-border" type="submit">Save changes</button>
+      </form>
+    </div>
+  </div>
+</div>
+<script src="./js/serialize.js"></script>
+<script src="./js/main2.js"></script>
+</body>
+</html>
