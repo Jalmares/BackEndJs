@@ -17,6 +17,10 @@ const cat_get = (req, res) => {
     }
 };
 
+const upload_cat = (req, res) => {
+    res.send('upload complete');
+};
+
 module.exports = {
-    cat_list_get, cat_get,
+    cat_list_get, cat_get, upload_cat,
 };
