@@ -2,12 +2,7 @@
 
 const catModel = require('../models/catModel');
 
-const cats = catModel.cats;
-
-const cat_list_get = (req, res) => {
-    res.json(cats);
-};
-
+/*
 const cat_get = (req, res) => {
     const catId = parseInt(req.params.id);
     if (catId > cats.length || catId <= 0) {
@@ -16,10 +11,24 @@ const cat_get = (req, res) => {
         res.json(cats[catId - 1]);
     }
 };
+ */
+
+const cat_get = async (req, res) => {
+    const params = [req.params.id];
+    const cat = await catModel.getCat(params);
+    await res.json(cat[0]);
+};
 
 const upload_cat = (req, res) => {
     res.send('upload complete');
 };
+
+const cat_list_get = async (req, res) => {
+    const cats = await catModel.getAllCats();
+    await res.json(cats);
+};
+
+
 
 module.exports = {
     cat_list_get, cat_get, upload_cat,

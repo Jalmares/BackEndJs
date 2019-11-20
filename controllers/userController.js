@@ -2,12 +2,12 @@
 
 const userModel = require('../models/userModel');
 
-const users = userModel.users;
-
-const user_list_get = (req, res) => {
-    res.json(users);
+const user_list_get = async (req, res) => {
+    const users = await userModel.getAllUsers();
+    await res.json(users);
 };
 
+/*
 const user_get = (req, res) => {
     const userId = parseInt(req.params.id);
     if (userId > users.length || userId <= 0) {
@@ -15,6 +15,12 @@ const user_get = (req, res) => {
     } else {
         res.json(users[userId - 1]);
     }
+};
+ */
+const user_get = async (req, res) => {
+    const params = [req.params.id];
+    const user = await userModel.getUser(params);
+    await res.json(user[0]);
 };
 
 const user_post = (req, res) => {
