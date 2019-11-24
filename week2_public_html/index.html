@@ -21,6 +21,10 @@
 
   <h3>Add cat</h3>
   <form action="http://localhost:3000/cat/upload" method="post" enctype="multipart/form-data" class="light-border">
+    <input class="light-border" type="text" name="name" placeholder="Name" required>
+    <input class="light-border" type="text" name="age" placeholder="Age" required>
+    <input class="light-border" type="text" name="weight" placeholder="Weight" required>
+    <input class="light-border" type="text" name="owner" placeholder="Owner" required>
     <input class="light-border" type="file" name="catfile" required>
     <button class="light-border" type="submit">Save</button>
   </form>

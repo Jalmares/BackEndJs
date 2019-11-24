@@ -4,25 +4,42 @@ const promisePool = pool.promise();
 
 const getAllUsers = async () => {
   try {
-    const [rows] = await promisePool.query('SELECT * FROM wop_user');
+    const [rows] = await promisePool.execute('SELECT * FROM wop_user');
     return rows;
   } catch (e) {
     console.log('error', e.message);
-    return {error: 'error in db query'};
+    return {error: 'error in database query'};
   }
 };
 
 const getUser = async (params) => {
   try {
     const [rows] = await promisePool.execute(
-        'SELECT * FROM wop_user WHERE user_id = ?', params,);
+        'SELECT * FROM wop_user WHERE user_id = ?;',
+        params,
+    );
     return rows;
   } catch (e) {
     console.log('error', e.message);
-    return {error: 'error in db query'};
+    return {error: 'error in database query'};
+  }
+};
+
+const addUser = async (params) => {
+  try {
+    const [rows] = await promisePool.execute(
+        'INSERT INTO wop_user (name, email, password) VALUES (?, ?, ?);',
+        params,
+    );
+    return rows;
+  } catch (e) {
+    console.log('error', e.message);
+    return {error: 'error in database query'};
   }
 };
 
 module.exports = {
-  getAllUsers, getUser,
+  getAllUsers,
+  getUser,
+  addUser,
 };
