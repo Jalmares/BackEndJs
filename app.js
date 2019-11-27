@@ -9,6 +9,7 @@ const userRoute = require('./routes/userRoute');
 app.use(express.urlencoded({extended: true}));
 app.use(cors());
 app.use(express.static('uploads'));
+app.use('/thumbnails', express.static('thumbnails'));
 
 app.use('/cat', catRoute);
 app.use('/user', userRoute);

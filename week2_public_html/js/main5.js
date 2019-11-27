@@ -285,3 +285,6 @@ if (sessionStorage.getItem('token')) {
   getCat();
   getUsers();
 }
+//delete these if/when login works
+getCat();
+getUsers();
